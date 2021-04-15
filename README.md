@@ -1,0 +1,2 @@
+# EZSpecialCurse
+LOL))
