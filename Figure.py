@@ -76,7 +76,7 @@ class Figure:
         print()
 
         for i in range(m):
-            a, b = [int(x) for x in input("Enter indices of edge points: ")]
+            a, b = [int(x) for x in input("Enter indices of edge points: ").split()]
             print()
             self.edges.append(Edge(self.vertices[a - 1], self.vertices[b - 1]))
 
