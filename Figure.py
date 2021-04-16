@@ -31,6 +31,7 @@ class Figure:
 
         self.init_edges_dict()
         self.init_faces()
+        self.filter_faces()
 
     def init_edges_dict(self) -> None:
         for i, edge in enumerate(self.edges):
@@ -104,6 +105,21 @@ class Figure:
                             act_face.edges.append(edge3)
                             act_edge = edge3
                             break
+                    else:
+                        self.faces.pop()
+                        break
+
+
+
+    def filter_faces(self):
+        self.faces = list(filter(lambda face: self.check_face(face), self.faces))
+
+    def check_face(self, face: Face):
+        sides = list()
+        for vertex in self.vertices:
+            if vertex not in face:
+                sides.append(face.side(vertex))
+        return all(map(lambda i: sides[i] == sides[i + 1], range(len(sides) - 1)))
 
     def main_method(self) -> None:
         face = enumerate_choice(self.faces, "Select face: ")

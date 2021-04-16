@@ -1,11 +1,16 @@
 from typing import List, Union
+from enum import Enum
+
+
 from Edge import Edge
-
-
 from Point import Point
 
 
 class Face:
+    class SIDES(Enum):
+        ONE = 1
+        TWO = 2
+
     def __init__(self, edges: List[Edge]) -> None:
         vertices = list(set((edges[0].vertex1, edges[0].vertex2, edges[1].vertex2, edges[1].vertex2)))
         self.vertex = vertices[0]
@@ -21,6 +26,9 @@ class Face:
             e = x
             return e.vertex1 in self and e.vertex2 in self
         return NotImplemented
+
+    def side(self, p: Point) -> SIDES:
+        return Face.SIDES.ONE if self.normal * (p - self.vertex) > 0 else Face.SIDES.TWO
 
     def __str__(self) -> str:
         return f"{self.edges}"
