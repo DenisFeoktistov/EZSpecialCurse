@@ -11,7 +11,7 @@ from Subsidiary import enumerate_choice
 class Figure:
     FILE_MODE = "Read from template file"
     CONSOLE_MODE = "Read from console"
-    DIRECTORY_PATH = "../figures/"
+    DIRECTORY_PATH = "./figures/"
 
     def __init__(self) -> None:
         self.vertices: List[Point] = list()
