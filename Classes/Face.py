@@ -1,5 +1,5 @@
 from typing import List, Union
-from Edge import Edge
+from Classes.Edge import Edge
 
 
 from Point import Point
